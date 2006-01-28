@@ -61,7 +61,6 @@ foreach my $func ( keys %language_test_map ) {
         Parrot::Test::generate_code( $code, $parrotdir, $count, $lang_fn );
 
         # STDERR is written into same output file
-        print Dumper( \@test_prog, $self );
         my $exit_code = Parrot::Test::run_command( 
                             \@test_prog, 
                             CD     => $self->{relpath}, 
