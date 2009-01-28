@@ -1,0 +1,5 @@
+/Makefile
+*.pbc
+*.m4
+*.pir_out
+/t/regex/*.pir
