@@ -3,15 +3,13 @@
 # Makefile for languages/m4
 
 # Setup of some commands
-PARROT        = ../../parrot@exe@
+PARROT        = @build_dir@/parrot@exe@
 PERL          = @perl@
 RM_RF         = @rm_rf@
 TOUCH         = $(PERL) -MExtUtils::Command -e touch
-BUILD_DIR     = @build_dir@
-RECONFIGURE   = $(PERL) @build_dir@/tools/dev/reconfigure.pl
-#CONDITIONED_LINE(darwin):
-#CONDITIONED_LINE(darwin):# MACOSX_DEPLOYMENT_TARGET must be defined for OS X compilation/linking
-#CONDITIONED_LINE(darwin):export MACOSX_DEPLOYMENT_TARGET := @osx_version@
+#IF(darwin):
+#IF(darwin):# MACOSX_DEPLOYMENT_TARGET must be defined for OS X compilation/linking
+#IF(darwin):export MACOSX_DEPLOYMENT_TARGET := @osx_version@
 
 default: all
 all: build 
@@ -39,7 +37,8 @@ help:
 
 # regenerate the Makefile
 Makefile: config/makefiles/root.in
-	cd $(BUILD_DIR) && $(RECONFIGURE) --step=gen::languages --languages=m4
+	$(PERL) Configure.pl
+
 
 test: build
 	$(PERL) -Ilib -I../../lib t/harness
