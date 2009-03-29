@@ -34,10 +34,6 @@ References: http://www.gnu.org/software/m4/m4.html
 # Macros are expanded in there.
 .include "src/macro.pir"
 
-# Mainly for debug output
-# .include "library/dumper.pir"
-
-
 =head1 SUBROUTINES
 
 =head2 __onload
